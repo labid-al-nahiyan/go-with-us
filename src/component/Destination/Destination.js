@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import './Destination.css';
-import privateCar from '../../images/privateCar.png';
-import people from '../../images/people.png'
+
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import fakeData from '../../fakeData.js'
+import AvailableCar from '../AvailableCar/AvailableCar';
+
+import { UserContext } from '../../App';
 
 
 const Destination = () => {
     const [isSearch, setIsSearch] = useState(false)
+    const [availableCar,setAvailableCar]=useState([])
+
     const [order, setOrder] = useState({
         to: 'Mirpur1',
         from: 'Motijheel'
@@ -17,6 +22,10 @@ const Destination = () => {
         newOrder[event.target.name] = event.target.value
         setOrder(newOrder)
     }
+    useEffect(()=>{
+        const data=fakeData;
+        setAvailableCar(data)
+    },[])
     return (
         <div className="container-fluid">
             <div className="row">
@@ -36,29 +45,17 @@ const Destination = () => {
                             <div>
                                 <div className="orange">
                                    < div>{order.to}</div>
-                                <div>{order.from}</div>
+                                    <div>{order.from}</div>
                                 </div>
                                 <div className="available-car"> 
-                                    <div>
-                                        <img src={privateCar} height="20px"
-                                            alt="" /> Car <img src={people} height="20px" alt="" />
-                                    </div>
-                                    <div>$57</div>
+                                    {
+                                        availableCar.map((Car)=>{
+                                            return <AvailableCar price={Car.price}  people={Car.people}></AvailableCar>
+                                        })
+                                    }
                                 </div>
-                                <div className="available-car"> 
-                                    <div>
-                                        <img src={privateCar} height="20px"
-                                            alt="" /> Car <img src={people} height="20px" alt="" />
-                                    </div>
-                                    <div>$57</div>
-                                </div>
-                                <div className="available-car"> 
-                                    <div>
-                                        <img src={privateCar} height="20px"
-                                            alt="" /> Car <img src={people} height="20px" alt="" />
-                                    </div>
-                                    <div>$57</div>
-                                </div>
+                                
+                                
                             </div>
                         }
                     </div>

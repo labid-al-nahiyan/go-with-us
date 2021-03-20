@@ -27,14 +27,11 @@
     padding: 10px;
     border-radius: 5px;
     border: 0;
+    margin: 5px;
+    
 }
 .available-car{
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px;
-    padding: 10px;
-    border-radius: 5px;
+    border: 1px solid black;
 }
 .map{
     margin-right: 100px;

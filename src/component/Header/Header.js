@@ -22,7 +22,7 @@ const Header = () => {
                         <li><Link to='/destination'>Destination</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/contact'>Contact</Link></li>
-                        <li>{loggedInUser.name ? loggedInUser.name : <Link to='/login'>Login</Link>}</li>
+                        <li>{loggedInUser.email ? loggedInUser.name : <Link to='/login'>Login</Link>}</li>
 
                     </ul>
                 </div>

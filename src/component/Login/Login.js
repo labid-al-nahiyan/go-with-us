@@ -15,6 +15,7 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const [goForLogin, setGoForLogin] = useState(false)
+    const [matchPass,setMatchPass]=useState(true)
     let history=useHistory();
     let location=useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -45,7 +46,8 @@ const Login = () => {
                 .then((res) => {
                     // Signed in
                     const { displayName, email } = res.user;
-                    const signInUser = {
+                    let signInUser={...loggedInUser}
+                     signInUser = {
                     isSignedIn: true,
                     name: displayName,
                     email: email
@@ -84,7 +86,8 @@ const Login = () => {
                 console.log("res find")
                 console.log(res)
                 const { displayName, email } = res.user;
-                const signInUser = {
+                let signInUser={...loggedInUser}
+                signInUser = {
                     isSignedIn: true,
                     name: displayName,
                     email: email
@@ -94,20 +97,33 @@ const Login = () => {
 
             })
     }
-    const handleBlur = (event) => {
+    let oldPassword;
+    const handleChange = (event) => {
 
         let isFormValid = true;
+        
         console.log(event.target.name, event.target.value)
         if (event.target.name === 'email') {
             isFormValid = /\S+@\S+\.\S+/.test(event.target.value)
 
         }
         if (event.target.name === 'password') {
+            oldPassword=event.target.value;
+            console.log(oldPassword)
             const isPasswordValid = event.target.value.length > 6;
             const passwordHasNumber = /\d{1}/.test(event.target.value)
             isFormValid = isPasswordValid && passwordHasNumber
         }
+        if (event.target.name === 'confirmPass') {
+            console.log(oldPassword,event.target.value)
+            if((oldPassword!==event.target.value))setMatchPass(false)
+            else{
+                setMatchPass(true)
+                
+            }
+        }
         if (isFormValid) {
+            setMatchPass(true)
             const newUserInfo = { ...loggedInUser }
             newUserInfo[event.target.name] = event.target.value;
             setLoggedInUser(newUserInfo)
@@ -121,10 +137,11 @@ const Login = () => {
                     <div className="form text-center">
                         <form action="">
 
-                            {!goForLogin && <input className="input-field" onBlur={handleBlur} name="name" type="text" placeholder="Name" required/>}
-                            <input className="input-field" type="email" onBlur={handleBlur} name="email" placeholder="loggedInUserName or Email" required/>
-                            <input className="input-field" type="password" onBlur={handleBlur} name="password" placeholder="Password"required />
-                            {!goForLogin && <input className="input-field" onBlur={handleBlur} name="confirmPass" type="password" placeholder="Confirm Passsword" required />}
+                            {!goForLogin && <input className="input-field" onChange={handleChange} name="name" type="text" placeholder="Name" required/>}
+                            <input className="input-field" type="email" onChange={handleChange} name="email" placeholder="loggedInUserName or Email" required/>
+                            <input className="input-field" type="password" onChange={handleChange} name="password" placeholder="Password"required />
+                            {!goForLogin && <input className="input-field" onChange={handleChange} name="confirmPass" type="password" placeholder="Confirm Passsword" required />}
+                            {!matchPass && <small style={{color:'red'}}>Password not match</small>}
                             {!goForLogin && <button className="orangeBtn" onClick={handleUser}>Create New Account</button> } 
                             {goForLogin && <button className="orangeBtn" onClick={handleUser}>LogIn</button>}
                             {!goForLogin &&

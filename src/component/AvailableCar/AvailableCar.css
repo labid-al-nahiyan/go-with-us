@@ -1,0 +1,9 @@
+.availableCarCart{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+  
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
