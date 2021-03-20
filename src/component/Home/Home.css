@@ -1,0 +1,29 @@
+.home{
+    background-image: url("../../images/Bg.png") ;
+    border: 1px solid yellow;
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: contain;
+    
+}
+.select-vehicle{
+    margin: 10px;
+    margin-top: 150px;
+    margin-bottom: 250px;
+    padding-left: 5%;
+    padding-right: 5%;
+        
+}
+.vehicle{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 10px;
+    font-weight: bold;
+   
+}
+.vehicle img{
+    width: 150px;
+    
+}

@@ -1,0 +1,41 @@
+.destination-form{
+    margin-top: 100px;
+    margin-left: 100px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 300px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+}
+
+
+.destination-input-field{
+    color: black;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+    width: 90%;
+}
+.destination-input-field:focus{
+    outline: none;
+}
+.orange{
+    background-color: orangered;
+    width: 90%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+}
+.available-car{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.map{
+    margin-right: 100px;
+}

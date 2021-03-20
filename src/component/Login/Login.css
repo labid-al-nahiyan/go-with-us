@@ -1,0 +1,45 @@
+.form{
+    margin-top: 100px;
+    padding: 40px;
+    display: inline-block;
+    border: 1px solid black;
+
+}
+body {
+    text-align: center;
+}
+
+.input-field{
+    border: 0px;
+    border-bottom: 2px solid gray;
+    color: black;
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    font-size: 15px;
+}
+.input-field:focus{
+    outline: none;
+}
+.orangeBtn{
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80%;
+    margin-bottom: 5px;
+}
+.stateChangebtn{
+    background-color: white;
+    border: 0;
+}
+.google{
+    margin-top: 10px;
+}
+.google button{
+    color:black;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: white;
+}
