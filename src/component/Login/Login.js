@@ -15,7 +15,8 @@ const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const [goForLogin, setGoForLogin] = useState(false)
-    const [matchPass,setMatchPass]=useState(true)
+    const [aboutPassword,setAboutPassword]=useState('')
+    const [passConfirmation,setPassConfirmation]=useState('')
     let history=useHistory();
     let location=useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
@@ -97,7 +98,7 @@ const Login = () => {
 
             })
     }
-    let oldPassword;
+    
     const handleChange = (event) => {
 
         let isFormValid = true;
@@ -108,22 +109,19 @@ const Login = () => {
 
         }
         if (event.target.name === 'password') {
-            oldPassword=event.target.value;
-            console.log(oldPassword)
             const isPasswordValid = event.target.value.length > 6;
+            console.log(aboutPassword)
             const passwordHasNumber = /\d{1}/.test(event.target.value)
+            const passwordInfo=!isPasswordValid?'*character must be more than 6':(!passwordHasNumber?'Must be a number(ex:1,2)':'');
+            setAboutPassword(passwordInfo)
             isFormValid = isPasswordValid && passwordHasNumber
         }
         if (event.target.name === 'confirmPass') {
-            console.log(oldPassword,event.target.value)
-            if((oldPassword!==event.target.value))setMatchPass(false)
-            else{
-                setMatchPass(true)
-                
-            }
+            const confirmPass=(event.target.value===loggedInUser['password'])?'':'password does not match'
+            setPassConfirmation(confirmPass)
         }
         if (isFormValid) {
-            setMatchPass(true)
+            
             const newUserInfo = { ...loggedInUser }
             newUserInfo[event.target.name] = event.target.value;
             setLoggedInUser(newUserInfo)
@@ -137,13 +135,15 @@ const Login = () => {
                     <div className="form text-center">
                         <form action="">
 
-                            {!goForLogin && <input className="input-field" onChange={handleChange} name="name" type="text" placeholder="Name" required/>}
-                            <input className="input-field" type="email" onChange={handleChange} name="email" placeholder="loggedInUserName or Email" required/>
+                            {!goForLogin && <input className="input-field" onChange={handleChange} name="name" type="text" placeholder="User Name" required/>}
+                            <input className="input-field" type="email" onChange={handleChange} name="email" placeholder="User Email" required/>
                             <input className="input-field" type="password" onChange={handleChange} name="password" placeholder="Password"required />
+                            <small style={{color:'red'}}>{aboutPassword}</small>
                             {!goForLogin && <input className="input-field" onChange={handleChange} name="confirmPass" type="password" placeholder="Confirm Passsword" required />}
-                            {!matchPass && <small style={{color:'red'}}>Password not match</small>}
-                            {!goForLogin && <button className="orangeBtn" onClick={handleUser}>Create New Account</button> } 
-                            {goForLogin && <button className="orangeBtn" onClick={handleUser}>LogIn</button>}
+                            {<small style={{color:'red'}}>{passConfirmation}</small>}
+                            {!goForLogin && <input type="submit" value="Create Account" className="orangeBtn" onClick={handleUser}/> } 
+                            {goForLogin && <input type="submit" value="Log In" className="orangeBtn" onClick={handleUser}/> }
+
                             {!goForLogin &&
                                 <p>Already has an account?<button className="stateChangebtn" onClick={() => { setGoForLogin(true) }}>Log in</button> </p>
                             }

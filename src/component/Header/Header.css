@@ -1,27 +1,28 @@
 .header{
     border: 2px solid white;
+    padding: 20px;
 
+    background: rgba(22, 209, 209, 0.342);
 }
 .header-title{
-    padding: 10px;
     display: flex;
-    
+
+    font-family: 'Chango', cursive;
+        margin-left: 60px;
 }
 
 
 .header-nav{
     list-style: none;
     display: flex;
-    padding: 10px;
+    margin-right: 60px;
     justify-content: flex-end;
 }
 .header-nav li{
     padding: 20px;
-    font-weight: bold;
+    
     font-style: 25px;
+    color: black;   
+    font-family: 'Chango', cursive;
 
-}
-.nav-link{
-    text-decoration: none;
-    color: black;
 }

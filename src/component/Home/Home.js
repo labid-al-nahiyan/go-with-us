@@ -13,7 +13,7 @@ import { UserContext } from '../../App';
 const Home = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const setVehicle=(vehicleName,vehicle)=>{
-        let newVehicle={...loggedInUser,vehicleName:vehicleName,vehicle:vehicle}
+        let newVehicle={...loggedInUser,vehicleName:vehicleName||'Car',vehicle:vehicle||privateCar}
         setLoggedInUser(newVehicle)
     }
     return (

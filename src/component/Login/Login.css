@@ -32,6 +32,8 @@ body {
 .stateChangebtn{
     background-color: white;
     border: 0;
+    color: orange;
+    text-decoration: underline;
 }
 .google{
     margin-top: 10px;

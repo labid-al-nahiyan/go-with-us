@@ -44,13 +44,13 @@ const Destination = () => {
                         {isSearch &&
                             <div>
                                 <div className="orange">
-                                   < div>{order.to}</div>
-                                    <div>{order.from}</div>
+                                   < div><b>From</b> : {order.to}</div>
+                                    <div><b>To</b> : {order.from}</div>
                                 </div>
                                 <div className="available-car"> 
                                     {
                                         availableCar.map((Car)=>{
-                                            return <AvailableCar price={Car.price}  people={Car.people}></AvailableCar>
+                                            return <AvailableCar price={Car.price}  people={Car.people} key={Car.id}></AvailableCar>
                                         })
                                     }
                                 </div>
