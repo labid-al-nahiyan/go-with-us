@@ -1,7 +1,7 @@
 <h2>Go With Us </h2>
 <ul style={backgroud-color:'red'}>
   <li>this is a transport site where you can select vahicle for transport and buy your ticket</li>
-  <li>Able to select vehicle and book ticket</li>
+  <li>Able to book ticket</li>
   <li>Able to see google map</li>
 </ul>
 
